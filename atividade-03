@@ -1,15 +1,43 @@
 import os
+os.system ("cls || clear ")
 
 # Função sem retorno.
 def logoSenai():
     os.system("cls || clear")
-    print("=== SENAI === ")
+    print("""
+            =============
+            --  SENAI --         
+            =============          
+""")
 
 # Definindo listas vazias para armazenar os dados dos usuários
 nomes = []
+sobrenomes = []
 idades = []
 alturas = []
 pesos = []
+classificacoes = []
+imcs = []
+
+def imc(alturas, pesos):
+    imc = pesos / (alturas * alturas)
+    return imc
+
+
+def classificacao(imc):
+    if imc < 18.5:
+        classificacao = "Abaixo do peso"
+    elif imc >= 18.5 and imc < 25:
+        classificacao = "Peso normal"
+    elif imc >= 25 and imc < 30:
+        classificacao = "Sobrepeso"
+    elif imc >= 30 and imc < 35:
+        classificacao = "Obesidade grau I"
+    elif imc >= 35 and imc < 40:
+        classificacao = "Obesidade grau II"
+    else:
+        classificacao = "Obesidade grau III (Mórbida)"
+    return classificacao
 
 # Solicitando os dados dos usuários em um loop
 while True:
@@ -20,23 +48,32 @@ while True:
     if nome.lower() == 'sair':
         break
     
+    sobrenome = input("Digite o seu sobrenome: ")
     idade = int(input("Digite a idade do usuário: "))
     altura = float(input("Digite a altura do usuário (em metros): "))
     peso = float(input("Digite o peso do usuário (em quilogramas): "))
-    
+    imc = imc(altura, peso)
+    classificacao_imc = classificacao(imc)
+
     # Adicionando os dados às listas
     nomes.append(nome)
+    sobrenomes.append(sobrenome)
     idades.append(idade)
     alturas.append(altura)
     pesos.append(peso)
+    imcs.append(imc)
+    classificacoes.append(classificacao_imc)
 
 # Exibindo os dados armazenados
 logoSenai()
-print("\nDados dos usuários:")
+print("======= Dados dos usuários ======= ")
 for i in range(len(nomes)):
-    print(f"Usuário {i+1}:")
+    print(f"\nUsuário {i+1}:")
     print("Nome:", nomes[i])
+    print("Sobrenome:", sobrenomes [i])
+    print("\nNome Completo:", nomes [i], sobrenomes [i])
     print("Idade:", idades[i])
     print("Altura:", alturas[i], "metros")
     print("Peso:", pesos[i], "quilogramas")
-    print()
+    print("Valor do seu IMC:", imcs[i])
+    print("Resultado:", classificacoes [i])
