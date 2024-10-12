@@ -52,8 +52,8 @@ while True:
     idade = int(input("Digite a idade do usuário: "))
     altura = float(input("Digite a altura do usuário (em metros): "))
     peso = float(input("Digite o peso do usuário (em quilogramas): "))
-    imc = imc(altura, peso)
-    classificacao_imc = classificacao(imc)
+    Imc = imc(altura, peso)
+    classificacao_imc = classificacao(Imc)
 
     # Adicionando os dados às listas
     nomes.append(nome)
@@ -61,7 +61,7 @@ while True:
     idades.append(idade)
     alturas.append(altura)
     pesos.append(peso)
-    imcs.append(imc)
+    imcs.append(Imc)
     classificacoes.append(classificacao_imc)
 
 # Exibindo os dados armazenados
